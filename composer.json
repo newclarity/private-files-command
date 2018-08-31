@@ -1,0 +1,23 @@
+{
+    "name": "newclarity/private-files",
+    "description": "WP CLI command to list, move, remove files in subdirectories of uploads/private",
+    "type": "wp-cli-package",
+    "homepage": "https://github.com/newclarity/private-files-command",
+    "support": {
+      "issues": "https://github.com/newclarity/private-files-command/issues"
+    },
+    "license": "GPL-3.0",
+    "authors": [
+        {
+                "name": "NewClarity Consulting, LLC",
+                "email": "saru@newclarity.net",
+                "homepage": "https://www.newclarity.com"
+            }
+        ],
+    "require": {
+        "php": ">=5.3.29"
+    },
+    "autoload": {
+        "files": [ "private-files-command.php" ]
+    }
+}

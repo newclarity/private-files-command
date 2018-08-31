@@ -2,16 +2,14 @@
 
 You can make these commands available
 
-Make it available in your WP CLI environment by importing it via `wp package import`.
-
-Import from Git:
+Make it available in your WP CLI environment installing it from Git:
 ```
-wp package import https://github.com/newclarity/private-files-command
+wp package install https://github.com/newclarity/private-files-command.git
 ```
 
-Import from local directory:
+Make it available in your WP CLI environment by installing it from local directory:
 ```
-wp package import <directory>/private-files-command
+wp package install <directory>/private-files-command
 ```
 
 You can also make it available in your WP runtime by requiring `private-files-command.php`

@@ -1,8 +1,6 @@
 <?php
 /**
- * Class Private_Files_Command
- * 
- * Implements WP CLI command to list, move, remove files in subdirectories of uploaded/private.
+ * Lists, moves, removes files in subdirectories of uploaded/private.
  */
 class Private_Files_Command extends WP_CLI_Command {
 

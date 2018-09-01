@@ -38,6 +38,8 @@ class Private_Files_Command extends WP_CLI_Command {
 	}
 
 	/**
+	 * Recursive glob.
+	 *
 	 * @param $pattern
 	 * @param int $flags
 	 *
@@ -45,7 +47,7 @@ class Private_Files_Command extends WP_CLI_Command {
 	 *
 	 * @return array
 	 */
-	function _glob_recursive($pattern, $flags = 0){
+	private function _glob_recursive($pattern, $flags = 0){
 
 		$files = glob( $pattern, $flags );
 		foreach ( glob( dirname( $pattern ) . '/*', GLOB_ONLYDIR | GLOB_NOSORT ) as $dir ) {
@@ -97,7 +99,7 @@ class Private_Files_Command extends WP_CLI_Command {
 			$path = "{$dir}/{$file}";
 
 			if ( ! file_exists( $path ) ) {
-				WP_CLI::error( "File does not exist: {$path}" );
+				WP_CLI::error( "File does not exist: \"{$path}\"!" );
 			}
 
 			$new_path = preg_replace( '/(.*\/uploads\/private\/)(uploaded|processed|failed)(\/.*)/', "$1{$destination}$3", $path );
@@ -106,9 +108,9 @@ class Private_Files_Command extends WP_CLI_Command {
 			$short_new_path = str_replace( $dir.'/', '', $new_path );
 
 			if( rename( $path, $new_path )){
-				WP_CLI::success( "File moved from \"{$short_path}\" to \"{$short_new_path}\"" );
+				WP_CLI::success( "File moved from \"{$short_path}\" to \"{$short_new_path}\"." );
 			} else {
-				WP_CLI::error( "File could not be moved from \"{$short_path}\" to \"{$short_new_path}\"" );
+				WP_CLI::error( "File could not be moved from \"{$short_path}\" to \"{$short_new_path}\"!" );
 			}
 
 		} while ( false );
@@ -141,15 +143,15 @@ class Private_Files_Command extends WP_CLI_Command {
 			$path = "{$dir}/{$file}";
 
 			if ( ! file_exists( $path ) ) {
-				WP_CLI::error( "File does not exist: {$path}" );
+				WP_CLI::error( "File does not exist: \"{$path}\"!" );
 			}
 
 			$short_path     = str_replace( $dir.'/', '', $path );
 
 			if( unlink( $path )){
-				WP_CLI::success( "File removed: \"{$short_path}\"" );
+				WP_CLI::success( "File removed: \"{$short_path}\"." );
 			} else {
-				WP_CLI::error( "File could not be removed from \"{$short_path}\"" );
+				WP_CLI::error( "File could not be removed: \"{$short_path}\"!" );
 			}
 
 		} while ( false );

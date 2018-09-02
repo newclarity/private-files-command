@@ -18,10 +18,11 @@ You can also install it from a local directory:
 wp package install /var/www/private-files-command
 ```
 
-You can make it available in your WP runtime by simply requiring `private-files-command.php`
+You can make it available in your WP runtime by simply requiring `class-private-files-command.php` and adding command this way:
 ```
 if ( defined( 'WP_CLI' ) && WP_CLI ) {
-    require_once dirname( __FILE__ ) . '/lib/private-files-command/private-files-command.php';
+    require_once dirname( __FILE__ ) . '/lib/private-files-command/class-private-files-command.php';
+    WP_CLI::add_command('private-files', 'Private_Files_Command' );
 }
 ```
 
@@ -40,7 +41,7 @@ You can add it to your project via `composer.json`:
   }
 ```
 
-Alternatively, you can invoke the version of this command that is published in `wp-composer-dependencies` repository:
+This command might also be included in `wp-composer-dependencies` repository:
 ```
   "repositories": [
       {
@@ -56,5 +57,5 @@ Alternatively, you can invoke the version of this command that is published in `
 
 In both cases, it will be placed in your `vendor` directory and can be included from there:
 ```
-	/var/www/vendor/newclarity/private-files-command
+wp package install /var/www/vendor/newclarity/private-files-command
 ```

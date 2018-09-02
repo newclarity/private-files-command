@@ -18,6 +18,6 @@
         "php": ">=5.3.29"
     },
     "autoload": {
-        "files": [ "private-files-command.php" ]
+        "files": [ "class-private-files-command.php" ]
     }
 }
